@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1290,801</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1290,827</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="61">
@@ -217,7 +217,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="1. killprocess 라이브러리를 사용해 엑셀과 크롬을 종료시킨다&#xA;2. 워크플로우를 사용해 config를 불러온다" DisplayName="프로그램 시작시 종료 및 config 불러오기" sap:VirtualizedContainerService.HintSize="400,132" sap2010:WorkflowViewState.IdRef="Sequence_143">
+              <Sequence sap2010:Annotation.AnnotationText="1. killprocess 라이브러리를 사용해 엑셀과 크롬을 종료시킨다&#xA;2. 워크플로우를 사용해 config URL 정보를 가져온다" DisplayName="프로그램 시작시 종료 및 config 불러오기" sap:VirtualizedContainerService.HintSize="400,132" sap2010:WorkflowViewState.IdRef="Sequence_143">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -228,15 +228,9 @@
                 <k:NewActivity sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="NewActivity_4" />
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="config 불러오기" DisplayName="InitAllSettings.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="I_ConfigFile">
-                      <Literal x:TypeArguments="x:String">Data\Config.xlsx</Literal>
-                    </InArgument>
-                    <InArgument x:TypeArguments="s:String[]" x:Key="I_ConfigSheets">
-                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;}" />
-                    </InArgument>
-                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="O_Config">
-                      <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="I_config" />
-                    </OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="I_ConfigFile">Data\Config.xlsx</InArgument>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="I_ConfigSheets">[{"Settings"}]</InArgument>
+                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="O_Config">[I_config]</OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -329,7 +323,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <Assign sap2010:Annotation.AnnotationText="yyyyMMdd 요일을 &#xA;한국어로 변환해주는 변수이다&#xA;" DisplayName="현재날짜를 한국어로 변환 변수" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_51">
+                  <Assign sap2010:Annotation.AnnotationText="현재 요일을 yyyy-MM-dd_dddd 한국어형식으로 변환해주는 변수이다&#xA;" DisplayName="현재날짜를 한국어로 변환 변수" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_51">
                     <Assign.To>
                       <OutArgument x:TypeArguments="x:String">[DATE_todayconvert]</OutArgument>
                     </Assign.To>
@@ -359,7 +353,7 @@
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx&quot;+ &quot;변경하였습니다.&quot;]" />
                 </Sequence>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="1234,9700" sap2010:WorkflowViewState.IdRef="Sequence_164">
+              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="1234,9741" sap2010:WorkflowViewState.IdRef="Sequence_164">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -367,19 +361,19 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <uix:NApplicationCard AttachMode="ByInstance" DisplayName="2. Use Browser Chrome: 네이버 웹툰 &gt; 요일별 웹툰 &gt; 전체웹툰" sap:VirtualizedContainerService.HintSize="1172,9536" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V2" WindowResize="Maximize">
+                <uix:NApplicationCard AttachMode="ByInstance" DisplayName="2. Use Browser Chrome: 네이버 웹툰 &gt; 요일별 웹툰 &gt; 전체웹툰" sap:VirtualizedContainerService.HintSize="1172,9577" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V2" WindowResize="Maximize">
                   <uix:NApplicationCard.Body>
                     <ActivityAction x:TypeArguments="x:Object">
                       <ActivityAction.Argument>
                         <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
                       </ActivityAction.Argument>
-                      <Sequence sap:VirtualizedContainerService.HintSize="1138,9310" sap2010:WorkflowViewState.IdRef="Sequence_208">
+                      <Sequence sap:VirtualizedContainerService.HintSize="1138,9351" sap2010:WorkflowViewState.IdRef="Sequence_208">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="1096,9218" sap2010:WorkflowViewState.IdRef="Sequence_163">
+                        <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="1096,9259" sap2010:WorkflowViewState.IdRef="Sequence_163">
                           <Sequence.Variables>
                             <Variable x:TypeArguments="x:String" Name="STR_checkkr" />
                             <Variable x:TypeArguments="x:String" Name="DT_beforeconvort" />
@@ -426,14 +420,14 @@
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
                           </ui:MultipleAssign>
-                          <Sequence DisplayName="웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="1034,820" sap2010:WorkflowViewState.IdRef="Sequence_149">
+                          <Sequence DisplayName="웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="1034,846" sap2010:WorkflowViewState.IdRef="Sequence_149">
                             <sap:WorkflowViewStateService.ViewState>
                               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <uix:NClick sap2010:Annotation.AnnotationText="공통형식이 ~요웹툰으로 시작된다&#xA;&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;&#xA;&#xA;STR_checkkr : 한글 날짜를 출력" ClickType="Single" DisplayName="요일별 웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="338,253" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
+                            <uix:NClick sap2010:Annotation.AnnotationText="공통형식이 ~요웹툰으로 시작된다&#xD;&#xA;엄격한 선택기에서&#xA;&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;&#xA;&#xA;STR_checkkr : 한글 날짜를 출력" ClickType="Single" DisplayName="요일별 웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="338,268" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/weekday" DesignTimeRectangle="694, 326, 56, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'수요웹툰'" FullSelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' type='' class='' check:innerText='&quot;+STR_checkkr+&quot;요웹툰' /&gt;&quot;]" Guid="f1a01dc1-97f4-49cb-bfd4-9ee45bbac92e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADwAAAAcCAYAAAA9UNxEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADcSURBVFhH7ZQLCsMwDEN31Fw+58gITGCMLTsjg+H6gWgaf0Whr/Uw2nB12rDHGONzusvuCwGcvZmyxhIjZTjTCMjBUhb6Xudn604IDcvm0SAWt2L6Du/6qdn3TAzXsFfMmrJhrEb3xJnVfMvVnxZb5GTJjGEmxlXDG2uBLQsvTz9vYhqWCzB5yBjLA5kcgNmRPNJfmDXRyNyojsWzM092+wvDTBb63suzuGYYC0bSWHfAi7GaiJ984RN2XyYLK0+KkTZchTZcnTZcnTZcnTZcnTZcnecZnnOu52iuNwZm9e9GkHjcAAAAAElFTkSuQmCC" InformativeScreenshot="a0d1ee7e9373f65b9817e2d84a35814b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 전체웹툰' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
                               </uix:NClick.Target>
@@ -454,7 +448,7 @@
                                 </uix:TargetAnchorable>
                               </uix:NClick.Target>
                             </uix:NClick>
-                            <uix:NExtractData sap2010:Annotation.AnnotationText="리스트형 데이터 가져와서 데이터 테이블로 저장하기" AppendResults="False" ContinueOnError="True" DataTable="[DT_table_1]" DisplayName="데이터 테이블로 추출하기" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목' ReferenceName='제목' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='제목 Src' ReferenceName='제목 Src' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Alt Text' ReferenceName='제목 Alt Text' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Url' ReferenceName='제목 Url' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='별점' ReferenceName='별점' ReferenceIdx='4'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림' ReferenceName='글/그림' ReferenceIdx='5'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림 Url' ReferenceName='글/그림 Url' ReferenceIdx='6'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='업데이트 일시' ReferenceName='업데이트 일시' ReferenceIdx='7'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='제목' attr='text' name2='제목 Src' attr2='src' name3='제목 Alt Text' attr3='alt' name4='제목 Url' attr4='href' /&gt;&lt;column name='별점' attr='text' /&gt;&lt;column name='글/그림' attr='text' name2='글/그림 Url' attr2='href' /&gt;&lt;column name='업데이트 일시' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="338,197" sap2010:WorkflowViewState.IdRef="NExtractData_16" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
+                            <uix:NExtractData sap2010:Annotation.AnnotationText="리스트형 데이터 가져와서 데이터 테이블로 저장하기&#xD;&#xA;제목, 업데이트 주기, URL, 업데이트 일시를 저장한다" AppendResults="False" ContinueOnError="True" DataTable="[DT_table_1]" DisplayName="데이터 테이블로 추출하기" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목' ReferenceName='제목' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='제목 Src' ReferenceName='제목 Src' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Alt Text' ReferenceName='제목 Alt Text' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Url' ReferenceName='제목 Url' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='별점' ReferenceName='별점' ReferenceIdx='4'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림' ReferenceName='글/그림' ReferenceIdx='5'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림 Url' ReferenceName='글/그림 Url' ReferenceIdx='6'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='업데이트 일시' ReferenceName='업데이트 일시' ReferenceIdx='7'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='제목' attr='text' name2='제목 Src' attr2='src' name3='제목 Alt Text' attr3='alt' name4='제목 Url' attr4='href' /&gt;&lt;column name='별점' attr='text' /&gt;&lt;column name='글/그림' attr='text' name2='글/그림 Url' attr2='href' /&gt;&lt;column name='업데이트 일시' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="338,208" sap2010:WorkflowViewState.IdRef="NExtractData_16" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
                               <uix:NExtractData.Target>
                                 <uix:TargetAnchorable DesignTimeRectangle="480, 512, 694, 3338" DesignTimeScaleFactor="1" FriendlyName="'목요 추천'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="0da5fb57-328e-4a8f-b0e4-fad551fae265" InformativeScreenshot="eedf935d9b97256981ef466318ca318e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 목요 웹툰' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
                               </uix:NExtractData.Target>
@@ -465,7 +459,7 @@
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NExtractData>
                           </Sequence>
-                          <Assign sap2010:Annotation.AnnotationText="1. INT_split : row(3).ToString.Split(&quot; &quot;)(INT_split)&#xA;카운트 변수" DisplayName="for each 반복문 숫자" sap:VirtualizedContainerService.HintSize="1034,128" sap2010:WorkflowViewState.IdRef="Assign_67">
+                          <Assign sap2010:Annotation.AnnotationText="1. INT_split : Split 카운트 변수이다&#xD;&#xA;&#xD;&#xA; row(3).ToString.Split(&quot; &quot;)(INT_split) &#xD;&#xA;" DisplayName="for each 반복문 숫자" sap:VirtualizedContainerService.HintSize="1034,143" sap2010:WorkflowViewState.IdRef="Assign_67">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[INT_split]</OutArgument>
                             </Assign.To>
@@ -497,7 +491,7 @@
                                       <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
                                     </scg:Dictionary>
                                   </sap:WorkflowViewStateService.ViewState>
-                                  <Assign sap:VirtualizedContainerService.HintSize="958,71" sap2010:WorkflowViewState.IdRef="Assign_65">
+                                  <Assign DisplayName="제목을 변수에 저장" sap:VirtualizedContainerService.HintSize="958,71" sap2010:WorkflowViewState.IdRef="Assign_65">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[DT_value_name]</OutArgument>
                                     </Assign.To>
@@ -505,7 +499,7 @@
                                       <InArgument x:TypeArguments="x:String">[row(0).ToString]</InArgument>
                                     </Assign.Value>
                                   </Assign>
-                                  <Assign sap2010:Annotation.AnnotationText="업데이트 일시에 2022.11.17 22:55 에서 날짜를 보기위해 split사용해 잘라주기" DisplayName="업데이트 일시" sap:VirtualizedContainerService.HintSize="958,113" sap2010:WorkflowViewState.IdRef="Assign_63">
+                                  <Assign sap2010:Annotation.AnnotationText="업데이트 일시에 2022.11.17 22:55 에서 날짜만 보기위해 split 사용해 잘라준다" DisplayName="업데이트 일시" sap:VirtualizedContainerService.HintSize="958,113" sap2010:WorkflowViewState.IdRef="Assign_63">
                                     <Assign.To>
                                       <OutArgument x:TypeArguments="x:String">[DT_splitvalue]</OutArgument>
                                     </Assign.To>
@@ -518,7 +512,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
-                                  <If sap2010:Annotation.AnnotationText="1. DT_beforeconvort : 전날 날짜이다&#xA;2. DT_splitvalue: 업데이트 날짜이다&#xA;&#xA;전날 날짜와 업데이트 날짜가 같은지 확인한다&#xA;&#xA;Then:  제목에 들어간 글짜를 확인한다&#xA;Else : &quot;업데이트 날짜가 달라서 다음으로 넘어간다&#xA;" Condition="[DT_beforeconvort = DT_splitvalue]" DisplayName="업데이트 일시 비교 if문" sap:VirtualizedContainerService.HintSize="958,7075" sap2010:WorkflowViewState.IdRef="If_27">
+                                  <If sap2010:Annotation.AnnotationText="1. DT_beforeconvort : 전날 날짜이다&#xA;2. DT_splitvalue: 업데이트 날짜이다&#xA;&#xA;전날 날짜와 업데이트 날짜가 같은지 확인한다&#xA;&#xA;Then:  제목에 들어간 글자를 확인한다&#xA;Else : &quot;업데이트 날짜가 달라서 다음으로 넘어간다&#xA;" Condition="[DT_beforeconvort = DT_splitvalue]" DisplayName="업데이트 일시 비교 if문" sap:VirtualizedContainerService.HintSize="958,7075" sap2010:WorkflowViewState.IdRef="If_27">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -533,7 +527,7 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <If sap2010:Annotation.AnnotationText="1. DT_value_name : 제목&#xA;&#xA;날짜가 같으면 제목에 휴재와 18세 이상 이용가능이 들어가 있는지 확인한다&#xA;&#xA;Then : 다음 웹툰으로 넘어간다&#xA;Else :  해당 웹툰 url을 연다&#xA;" Condition="[DT_value_name.Contains(&quot;휴재&quot;) OR DT_value_name.Contains(&quot;18세 이상 이용가능&quot;)]" sap:VirtualizedContainerService.HintSize="834,6385" sap2010:WorkflowViewState.IdRef="If_26">
+                                        <If sap2010:Annotation.AnnotationText="1. DT_value_name : 제목&#xA;&#xA;날짜가 같으면 제목에 휴재와 18세 이상 이용가능이 들어가 있는지 확인한다&#xA;&#xA;Then : 다음 웹툰으로 넘어간다&#xA;Else :  해당 웹툰 url을 연다&#xA;" Condition="[DT_value_name.Contains(&quot;휴재&quot;) OR DT_value_name.Contains(&quot;18세 이상 이용가능&quot;)]" DisplayName="휴재, 18세 이상 이용가능이 포함되는지 확인 if문" sap:VirtualizedContainerService.HintSize="834,6385" sap2010:WorkflowViewState.IdRef="If_26">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -548,7 +542,7 @@
                                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                 </scg:Dictionary>
                                               </sap:WorkflowViewStateService.ViewState>
-                                              <ui:Continue sap2010:Annotation.AnnotationText="Then일시 다음거로 넘어간다" DisplayName="Continue" sap:VirtualizedContainerService.HintSize="358,63" sap2010:WorkflowViewState.IdRef="Continue_6">
+                                              <ui:Continue sap2010:Annotation.AnnotationText="Then 일시 다음거로 넘어간다" DisplayName="Continue" sap:VirtualizedContainerService.HintSize="358,63" sap2010:WorkflowViewState.IdRef="Continue_6">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -827,7 +821,7 @@
                                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                                       </scg:Dictionary>
                                                                     </sap:WorkflowViewStateService.ViewState>
-                                                                    <Assign sap2010:Annotation.AnnotationText="워크시트 이름 : 웹툰명_날짜&#xA;웹툰 이름, 오늘 날짜로 저장해야하므로 변수에 저장한다" sap:VirtualizedContainerService.HintSize="434,127" sap2010:WorkflowViewState.IdRef="Assign_71">
+                                                                    <Assign sap2010:Annotation.AnnotationText="워크시트 이름 : 웹툰명_등록날짜&#xA;웹툰 이름, 등록 날짜로 저장해야하므로 변수에 저장한다" sap:VirtualizedContainerService.HintSize="434,127" sap2010:WorkflowViewState.IdRef="Assign_71">
                                                                       <Assign.To>
                                                                         <OutArgument x:TypeArguments="x:String">[DT_converttoday]</OutArgument>
                                                                       </Assign.To>
