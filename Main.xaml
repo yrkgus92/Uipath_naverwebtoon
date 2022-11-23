@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>906,801</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1290,801</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="61">
@@ -228,9 +228,15 @@
                 <k:NewActivity sap:VirtualizedContainerService.HintSize="338,32" sap2010:WorkflowViewState.IdRef="NewActivity_4" />
                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="config 불러오기" DisplayName="InitAllSettings.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="338,153" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="Framework\InitAllSettings.xaml">
                   <ui:InvokeWorkflowFile.Arguments>
-                    <InArgument x:TypeArguments="x:String" x:Key="I_ConfigFile">Data\Config.xlsx</InArgument>
-                    <InArgument x:TypeArguments="s:String[]" x:Key="I_ConfigSheets">[{"Settings"}]</InArgument>
-                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="O_Config">[I_config]</OutArgument>
+                    <InArgument x:TypeArguments="x:String" x:Key="I_ConfigFile">
+                      <Literal x:TypeArguments="x:String">Data\Config.xlsx</Literal>
+                    </InArgument>
+                    <InArgument x:TypeArguments="s:String[]" x:Key="I_ConfigSheets">
+                      <VisualBasicValue x:TypeArguments="s:String[]" ExpressionText="{}{&quot;Settings&quot;}" />
+                    </InArgument>
+                    <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="O_Config">
+                      <VisualBasicReference x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="I_config" />
+                    </OutArgument>
                   </ui:InvokeWorkflowFile.Arguments>
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -239,7 +245,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InvokeWorkflowFile>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="폴더가 있는지 확인한다&#xA;1.Then 폴더가 있을시 폴더를 삭제한다&#xA;2. 폴더를 만든다&#xA;3. 파일을 복사해 폴더안에 복사한다" DisplayName="폴더 만들기" sap:VirtualizedContainerService.HintSize="606,2631" sap2010:WorkflowViewState.IdRef="Sequence_148">
+              <Sequence sap2010:Annotation.AnnotationText="폴더가 있는지 확인한다&#xA;1.Then 폴더가 있을시 폴더를 삭제한다&#xA;2. 폴더를 만든다&#xA;3. 파일을 복사해 폴더안에 복사한다" DisplayName="폴더 만들기" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_148">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="desktoplocal" />
                 </Sequence.Variables>
@@ -353,7 +359,7 @@
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx&quot;+ &quot;변경하였습니다.&quot;]" />
                 </Sequence>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="400,147" sap2010:WorkflowViewState.IdRef="Sequence_164">
+              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="1234,9700" sap2010:WorkflowViewState.IdRef="Sequence_164">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -826,7 +832,7 @@
                                                                         <OutArgument x:TypeArguments="x:String">[DT_converttoday]</OutArgument>
                                                                       </Assign.To>
                                                                       <Assign.Value>
-                                                                        <InArgument x:TypeArguments="x:String">[DT_value_name+"_"+DATE_today.ToString("yyMMdd")]</InArgument>
+                                                                        <InArgument x:TypeArguments="x:String">[DT_value_name+"_"+DATE_before.ToString("yyMMdd")]</InArgument>
                                                                       </Assign.Value>
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
