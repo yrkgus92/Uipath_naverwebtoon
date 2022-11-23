@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1290,801</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>906,801</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="61">
@@ -217,7 +217,7 @@
                   <x:Boolean x:Key="IsPinned">False</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence sap2010:Annotation.AnnotationText="1. killprocess 라이브러리를 사용해 엑셀과 크롬을 종료시킨다&#xD;&#xA;2. 워크플로우를 사용해 config를 불러온다" DisplayName="프로그램 시작시 종료 및 config 불러오기" sap:VirtualizedContainerService.HintSize="400,132" sap2010:WorkflowViewState.IdRef="Sequence_143">
+              <Sequence sap2010:Annotation.AnnotationText="1. killprocess 라이브러리를 사용해 엑셀과 크롬을 종료시킨다&#xA;2. 워크플로우를 사용해 config를 불러온다" DisplayName="프로그램 시작시 종료 및 config 불러오기" sap:VirtualizedContainerService.HintSize="400,132" sap2010:WorkflowViewState.IdRef="Sequence_143">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -239,7 +239,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:InvokeWorkflowFile>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="폴더가 있는지 확인한다&#xD;&#xA;1.Then 폴더가 있을시 폴더를 삭제한다&#xD;&#xA;2. 폴더를 만든다&#xD;&#xA;3. 파일을 복사해 폴더안에 복사한다" DisplayName="폴더 만들기" sap:VirtualizedContainerService.HintSize="400,162" sap2010:WorkflowViewState.IdRef="Sequence_148">
+              <Sequence sap2010:Annotation.AnnotationText="폴더가 있는지 확인한다&#xA;1.Then 폴더가 있을시 폴더를 삭제한다&#xA;2. 폴더를 만든다&#xA;3. 파일을 복사해 폴더안에 복사한다" DisplayName="폴더 만들기" sap:VirtualizedContainerService.HintSize="606,2631" sap2010:WorkflowViewState.IdRef="Sequence_148">
                 <Sequence.Variables>
                   <Variable x:TypeArguments="x:String" Name="desktoplocal" />
                 </Sequence.Variables>
@@ -250,14 +250,7 @@
                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <ui:GetEnvironmentFolder sap2010:Annotation.AnnotationText="문서 경로를 가져와 local 변수에 저장한다&#xD;&#xA;폴더 만들때 사용한다" DisplayName="Get Environment Folder" FolderPath="[local]" sap:VirtualizedContainerService.HintSize="544,113" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_2" SpecialFolder="MyDocuments">
-                  <sap:WorkflowViewStateService.ViewState>
-                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                    </scg:Dictionary>
-                  </sap:WorkflowViewStateService.ViewState>
-                </ui:GetEnvironmentFolder>
-                <ui:GetEnvironmentFolder sap2010:Annotation.AnnotationText="바탕화면 경로를 가져와 desktoplocal에 저장한다.&#xD;&#xA;파일 복사시 사용한다" DisplayName="Get Environment Folder" FolderPath="[desktoplocal]" sap:VirtualizedContainerService.HintSize="544,113" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_3" SpecialFolder="Desktop">
+                <ui:GetEnvironmentFolder sap2010:Annotation.AnnotationText="문서 경로를 가져와 local 변수에 저장한다&#xA;폴더 만들때 사용한다" DisplayName="Get Environment Folder" FolderPath="[local]" sap:VirtualizedContainerService.HintSize="544,113" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_2" SpecialFolder="MyDocuments">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -343,7 +336,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </Assign>
-                  <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="원본파일에서 파일을 복사해준다." Destination="[local+&quot;\이가현&quot;]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="338,194" sap2010:WorkflowViewState.IdRef="CopyFile_3" Path="[desktoplocal+&quot;\교육09_네이버웹툰크롤링.xlsx&quot;]">
+                  <ui:CopyFile ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="원본파일에서 파일을 복사해준다." Destination="[local+&quot;\이가현&quot;]" DisplayName="Copy File" sap:VirtualizedContainerService.HintSize="338,194" sap2010:WorkflowViewState.IdRef="CopyFile_3" Path="[local+&quot;\UiPath\NaverWebtoon\Data\교육09_네이버웹툰크롤링.xlsx&quot;]">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -360,7 +353,7 @@
                   <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,101" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Info" Message="[DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx&quot;+ &quot;변경하였습니다.&quot;]" />
                 </Sequence>
               </Sequence>
-              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xD;&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="1234,9700" sap2010:WorkflowViewState.IdRef="Sequence_164">
+              <Sequence sap2010:Annotation.AnnotationText="1. 상위 5개의 웹툰의 베스트 댓글, 좋아요, 싫어요 정보를 수집한다&#xA;2. 수집된 정보는 엑셀에 입력하고 저장한다" DisplayName="웹툰 크롤링" sap:VirtualizedContainerService.HintSize="400,147" sap2010:WorkflowViewState.IdRef="Sequence_164">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -434,7 +427,7 @@
                                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
                               </scg:Dictionary>
                             </sap:WorkflowViewStateService.ViewState>
-                            <uix:NClick sap2010:Annotation.AnnotationText="공통형식이 ~요웹툰으로 시작된다&#xD;&#xA;&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;&#xD;&#xA;&#xD;&#xA;STR_checkkr : 한글 날짜를 출력" ClickType="Single" DisplayName="요일별 웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="338,253" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
+                            <uix:NClick sap2010:Annotation.AnnotationText="공통형식이 ~요웹툰으로 시작된다&#xA;&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;&#xA;&#xA;STR_checkkr : 한글 날짜를 출력" ClickType="Single" DisplayName="요일별 웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="338,253" sap2010:WorkflowViewState.IdRef="NClick_44" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="8da7633b-2096-4001-9ac4-e0c7e3d5f254" Version="V3">
                               <uix:NClick.Target>
                                 <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/weekday" DesignTimeRectangle="694, 326, 56, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'수요웹툰'" FullSelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' type='' class='' check:innerText='&quot;+STR_checkkr+&quot;요웹툰' /&gt;&quot;]" Guid="f1a01dc1-97f4-49cb-bfd4-9ee45bbac92e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADwAAAAcCAYAAAA9UNxEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADcSURBVFhH7ZQLCsMwDEN31Fw+58gITGCMLTsjg+H6gWgaf0Whr/Uw2nB12rDHGONzusvuCwGcvZmyxhIjZTjTCMjBUhb6Xudn604IDcvm0SAWt2L6Du/6qdn3TAzXsFfMmrJhrEb3xJnVfMvVnxZb5GTJjGEmxlXDG2uBLQsvTz9vYhqWCzB5yBjLA5kcgNmRPNJfmDXRyNyojsWzM092+wvDTBb63suzuGYYC0bSWHfAi7GaiJ984RN2XyYLK0+KkTZchTZcnTZcnTZcnTZcnTZcnecZnnOu52iuNwZm9e9GkHjcAAAAAElFTkSuQmCC" InformativeScreenshot="a0d1ee7e9373f65b9817e2d84a35814b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 전체웹툰' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
                               </uix:NClick.Target>
@@ -466,7 +459,7 @@
                               </sap:WorkflowViewStateService.ViewState>
                             </uix:NExtractData>
                           </Sequence>
-                          <Assign sap2010:Annotation.AnnotationText="1. INT_split : row(3).ToString.Split(&quot; &quot;)(INT_split)&#xD;&#xA;카운트 변수" DisplayName="for each 반복문 숫자" sap:VirtualizedContainerService.HintSize="1034,128" sap2010:WorkflowViewState.IdRef="Assign_67">
+                          <Assign sap2010:Annotation.AnnotationText="1. INT_split : row(3).ToString.Split(&quot; &quot;)(INT_split)&#xA;카운트 변수" DisplayName="for each 반복문 숫자" sap:VirtualizedContainerService.HintSize="1034,128" sap2010:WorkflowViewState.IdRef="Assign_67">
                             <Assign.To>
                               <OutArgument x:TypeArguments="x:Int32">[INT_split]</OutArgument>
                             </Assign.To>
@@ -519,7 +512,7 @@
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                   </Assign>
-                                  <If sap2010:Annotation.AnnotationText="1. DT_beforeconvort : 전날 날짜이다&#xD;&#xA;2. DT_splitvalue: 업데이트 날짜이다&#xD;&#xA;&#xD;&#xA;전날 날짜와 업데이트 날짜가 같은지 확인한다&#xD;&#xA;&#xD;&#xA;Then:  제목에 들어간 글짜를 확인한다&#xD;&#xA;Else : &quot;업데이트 날짜가 달라서 다음으로 넘어간다&#xD;&#xA;" Condition="[DT_beforeconvort = DT_splitvalue]" DisplayName="업데이트 일시 비교 if문" sap:VirtualizedContainerService.HintSize="958,7075" sap2010:WorkflowViewState.IdRef="If_27">
+                                  <If sap2010:Annotation.AnnotationText="1. DT_beforeconvort : 전날 날짜이다&#xA;2. DT_splitvalue: 업데이트 날짜이다&#xA;&#xA;전날 날짜와 업데이트 날짜가 같은지 확인한다&#xA;&#xA;Then:  제목에 들어간 글짜를 확인한다&#xA;Else : &quot;업데이트 날짜가 달라서 다음으로 넘어간다&#xA;" Condition="[DT_beforeconvort = DT_splitvalue]" DisplayName="업데이트 일시 비교 if문" sap:VirtualizedContainerService.HintSize="958,7075" sap2010:WorkflowViewState.IdRef="If_27">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -534,7 +527,7 @@
                                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                           </scg:Dictionary>
                                         </sap:WorkflowViewStateService.ViewState>
-                                        <If sap2010:Annotation.AnnotationText="1. DT_value_name : 제목&#xD;&#xA;&#xD;&#xA;날짜가 같으면 제목에 휴재와 18세 이상 이용가능이 들어가 있는지 확인한다&#xD;&#xA;&#xD;&#xA;Then : 다음 웹툰으로 넘어간다&#xD;&#xA;Else :  해당 웹툰 url을 연다&#xD;&#xA;" Condition="[DT_value_name.Contains(&quot;휴재&quot;) OR DT_value_name.Contains(&quot;18세 이상 이용가능&quot;)]" sap:VirtualizedContainerService.HintSize="834,6385" sap2010:WorkflowViewState.IdRef="If_26">
+                                        <If sap2010:Annotation.AnnotationText="1. DT_value_name : 제목&#xA;&#xA;날짜가 같으면 제목에 휴재와 18세 이상 이용가능이 들어가 있는지 확인한다&#xA;&#xA;Then : 다음 웹툰으로 넘어간다&#xA;Else :  해당 웹툰 url을 연다&#xA;" Condition="[DT_value_name.Contains(&quot;휴재&quot;) OR DT_value_name.Contains(&quot;18세 이상 이용가능&quot;)]" sap:VirtualizedContainerService.HintSize="834,6385" sap2010:WorkflowViewState.IdRef="If_26">
                                           <sap:WorkflowViewStateService.ViewState>
                                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -586,7 +579,7 @@
                                                   </scg:Dictionary>
                                                 </sap:WorkflowViewStateService.ViewState>
                                               </Assign>
-                                              <If sap2010:Annotation.AnnotationText="1.INT_limitcount : 5개까지 제한하는 카운트 변수이다&#xD;&#xA;&#xD;&#xA;카운트 변수를 사용해 5보다 작거나 같은지 확인한다&#xA;&#xD;&#xA;Then :  상위 5개 웹툰을 크롤링할때까지 작업을 반복한다&#xD;&#xA;Else :  상위 5개의 웹툰을 크롤링하여 작업을 종료한다" Condition="[INT_limitcount &lt;= 5]" DisplayName="If_상위 웹툰 5개만 가져오기" sap:VirtualizedContainerService.HintSize="710,5418" sap2010:WorkflowViewState.IdRef="If_25">
+                                              <If sap2010:Annotation.AnnotationText="1.INT_limitcount : 5개까지 제한하는 카운트 변수이다&#xA;&#xA;카운트 변수를 사용해 5보다 작거나 같은지 확인한다&#xA;&#xA;Then :  상위 5개 웹툰을 크롤링할때까지 작업을 반복한다&#xA;Else :  상위 5개의 웹툰을 크롤링하여 작업을 종료한다" Condition="[INT_limitcount &lt;= 5]" DisplayName="If_상위 웹툰 5개만 가져오기" sap:VirtualizedContainerService.HintSize="710,5418" sap2010:WorkflowViewState.IdRef="If_25">
                                                 <sap:WorkflowViewStateService.ViewState>
                                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                     <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -599,7 +592,7 @@
                                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                                       </scg:Dictionary>
                                                     </sap:WorkflowViewStateService.ViewState>
-                                                    <If sap2010:Annotation.AnnotationText="1. DT_value_name : 웹툰 제목이 나오는 변수이다&#xD;&#xA; &#xD;&#xA;휴재와 18세 이상 제외한 웹툰 중 제목에 컷툰이 들어간 웹툰이 있는지 확인한다&#xD;&#xA;&#xD;&#xA;Then : 컷툰이 포함되면 컷툰을 제목에서 잘라주고 컷툰을 클릭한다&#xD;&#xA;Else : 컷춘이 포함되지 않은 웹툰이므로 웹툰을 클릭한다&#xD;&#xA;" Condition="[DT_value_name.Contains(&quot;컷툰&quot;)]" DisplayName="If_웹툰 이름에 컷툰이 들어가 있는지 확인" sap:VirtualizedContainerService.HintSize="586,3283" sap2010:WorkflowViewState.IdRef="If_24">
+                                                    <If sap2010:Annotation.AnnotationText="1. DT_value_name : 웹툰 제목이 나오는 변수이다&#xA; &#xA;휴재와 18세 이상 제외한 웹툰 중 제목에 컷툰이 들어간 웹툰이 있는지 확인한다&#xA;&#xA;Then : 컷툰이 포함되면 컷툰을 제목에서 잘라주고 컷툰을 클릭한다&#xA;Else : 컷춘이 포함되지 않은 웹툰이므로 웹툰을 클릭한다&#xA;" Condition="[DT_value_name.Contains(&quot;컷툰&quot;)]" DisplayName="If_웹툰 이름에 컷툰이 들어가 있는지 확인" sap:VirtualizedContainerService.HintSize="586,3283" sap2010:WorkflowViewState.IdRef="If_24">
                                                       <sap:WorkflowViewStateService.ViewState>
                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
