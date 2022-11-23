@@ -840,7 +840,7 @@
                                                                         </scg:Dictionary>
                                                                       </sap:WorkflowViewStateService.ViewState>
                                                                     </Assign>
-                                                                    <ueab:DuplicateSheetX sap2010:Annotation.AnnotationText="1. DT_converttoday : 웹툰명_오늘날짜&#xA;&#xA;워크시트를 복제해서 이름을 변수를 사용해 웹툰명_날짜로 바꿔준다" DisplayName="워크시트 복제하기" sap:VirtualizedContainerService.HintSize="434,204" sap2010:WorkflowViewState.IdRef="DuplicateSheetX_5" NewSheetName="[DT_converttoday]" SheetToDuplicate="[Excel.Sheet(&quot;웹툰명_220406&quot;)]">
+                                                                    <ueab:DuplicateSheetX sap2010:Annotation.AnnotationText="1. DT_converttoday : 웹툰명_등록날짜&#xA;&#xA;워크시트를 복제해서 이름을 변수를 사용해 웹툰명_날짜로 바꿔준다" DisplayName="워크시트 복제하기" sap:VirtualizedContainerService.HintSize="434,204" sap2010:WorkflowViewState.IdRef="DuplicateSheetX_5" NewSheetName="[DT_converttoday]" SheetToDuplicate="[Excel.Sheet(&quot;웹툰명_220406&quot;)]">
                                                                       <sap:WorkflowViewStateService.ViewState>
                                                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                                                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
