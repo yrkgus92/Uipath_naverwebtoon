@@ -1,0 +1,249 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="excel" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="I_DT_value" Type="InArgument(x:String)" />
+    <x:Property Name="DATE_todayconvert" Type="InArgument(x:String)" />
+    <x:Property Name="DT_table_w2" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="INT_limit" Type="InArgument(x:Int32)" />
+    <x:Property Name="DT_filter_2" Type="InArgument(sd:DataTable)" />
+    <x:Property Name="localdesktop_1" Type="InArgument(x:String)" />
+    <x:Property Name="INT_clickcount" Type="InArgument(x:Int32)" />
+    <x:Property Name="local_excel" Type="InArgument(x:String)" />
+    <x:Property Name="DT_name_excel" Type="InArgument(x:String)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1285,2765</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>excel_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="43">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Security</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="excel" sap:VirtualizedContainerService.HintSize="628,2700" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" FileConflictResolution="PromptUser" sap:VirtualizedContainerService.HintSize="586,2610" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_3">
+      <ueab:ExcelProcessScopeX.Body>
+        <ActivityAction x:TypeArguments="ui:IExcelProcess">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="552,2514" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <Assign sap2010:Annotation.AnnotationText="현재 요일을 yyyy-MM-dd_dddd 한국어형식으로 변환해주는 변수이다&#xA;" DisplayName="현재날짜를 한국어로 변환 변수" sap:VirtualizedContainerService.HintSize="510,127" sap2010:WorkflowViewState.IdRef="Assign_2">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">[DATE_todayconvert]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">[DateTime.Parse(now.ToString).ToString("yyyy-MM-dd_dddd",new CultureInfo("ko"))]</InArgument>
+              </Assign.Value>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </Assign>
+            <ueab:ExcelApplicationCard Password="{x:Null}" ReadFormatting="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="510,2257" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_1" KeepExcelFileOpen="True" ResizeWindow="Maximize" TemplatePath="C:\Users\lgh\Documents\이가현\2022-11-28_월요일_네이버웹툰크롤링.xlsx" UseTemplate="True" WorkbookPath="[local_excel+&quot;\이가현\&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx&quot;]">
+              <ueab:ExcelApplicationCard.Body>
+                <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
+                  </ActivityAction.Argument>
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,1956" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="s:DateTime" Name="DATE_today" />
+                      <Variable x:TypeArguments="x:String" Name="DATE_converttoday" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap2010:Annotation.AnnotationText="워크시트 이름 : 웹툰명_등록날짜&#xA;웹툰 이름, 등록 날짜로 저장해야하므로 변수에 저장한다" sap:VirtualizedContainerService.HintSize="434,127" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">[DATE_converttoday]</OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">[DT_name_excel+"_"+ DateTime.Parse(now.ToString).ToString("yyMMdd")]</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ueab:DuplicateSheetX sap2010:Annotation.AnnotationText="1. DT_converttoday : 웹툰명_등록날짜&#xA;&#xA;워크시트를 복제해서 이름을 변수를 사용해 웹툰명_날짜로 바꿔준다" DisplayName="워크시트 복제하기" sap:VirtualizedContainerService.HintSize="434,204" sap2010:WorkflowViewState.IdRef="DuplicateSheetX_1" NewSheetName="[DATE_converttoday]" SheetToDuplicate="[Excel.Sheet(&quot;웹툰명_220406&quot;)]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ueab:DuplicateSheetX>
+                    <ueab:WriteRangeX sap2010:Annotation.AnnotationText="가져온 댓글 데이터를 엑셀에 입력해준다" Destination="[Excel.Sheet(DATE_converttoday).Range(&quot;A:C&quot;)]" DisplayName="Write DataTable to Excel" sap:VirtualizedContainerService.HintSize="434,199" sap2010:WorkflowViewState.IdRef="WriteRangeX_1" IgnoreEmptySource="False" Source="[DT_table_w2]">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ueab:WriteRangeX>
+                    <uix:NClick ClickType="Single" DisplayName="Click 'Top5'" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="NClick_1" InScope="[Excel]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="Excel" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="535, 998, 56, 28" DesignTimeScaleFactor="1" FriendlyName="'Top5'" FullSelectorArgument="[&quot;&lt;uia automationid='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx' cls='ExcelBookTabControl' name='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링' /&gt;&lt;uia automationid='SheetTab' name='Top5' role='시트 탭' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;uia automationid='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx' cls='ExcelBookTabControl' name='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링' /&gt;&lt;uia automationid='SheetTab' name='Top5' role='시트 탭' check:fulltext='Top5' /&gt;&quot;]" Guid="fbe3bd8e-63f6-4c34-b124-5c4517ec6b85" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADwAAAAgCAYAAABO6BuSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEsSURBVFhH7ZU7DoMwDIa5Si/TjYMwIw6BxAVgZuAQGSvUnZ2BAYmR9gAuBqckbVrxKqJJfskSlp0on+0EBwyTecBxHAM3ncUZnbquAc0EYOS0wLrKAltgzWSBlwCz9AwnX2FpThnrVDJP3jfKoKTYXG3c4RwCPwRG3lZC4KAgZ6V2Aq4giYQOSTkY8yBpcC2Po0/hTjhBfwQ8wLqsIp9G9DmWvBjCuiKUfPnKqAo6Xb8HbjJw3+4c7+rrN9dQBFVX5WLN1++BsVuKx2scUxXwtzFW50/VPsCLOvwJ6ujA/QEn3GGhKHK821OYkOOPdC+C4g+PdGDqGMOHiufIe/SQyrXztTHwEq0b0bmywBZYM1lg44DHX4O+ZjawKWaBdTfnml/AJHPutxbMsRYeUXydalfRXVsAAAAASUVORK5CYII=" InformativeScreenshot="fe7c249b955e9c7a919ad7f3a40845e7.png" ScopeSelectorArgument="[&quot;&lt;wnd app='excel.exe' cls='XLMAIN' title='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx - Excel' /&gt;&quot;]" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NClick ClickType="Single" DisplayName="Click '2'" sap:VirtualizedContainerService.HintSize="434,166" sap2010:WorkflowViewState.IdRef="NClick_2" InScope="[Excel]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="Excel" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="42, 262, 375, 155" DesignTimeScaleFactor="1" FriendlyName="'A2'" FullSelectorArgument="[&quot;&lt;uia automationid='Grid' name='눈금' role='데이터 그리드' /&gt;&lt;uia automationid='A'&quot;+INT_clickcount.ToString+&quot;' name='A&quot;+INT_clickcount.ToString+&quot;' role='항목' tableCol='1' tableRow='&quot;+INT_clickcount.ToString+&quot;' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;uia automationid='Grid' name='눈금' role='데이터 그리드' /&gt;&lt;uia automationid='A&quot;+INT_clickcount.ToString+&quot;' name='A&quot;+INT_clickcount.ToString+&quot;' role='항목' check:fulltext='A&quot;+INT_clickcount.ToString+&quot;' /&gt;&quot;]" Guid="e48d21fb-1f7a-4d19-afdf-d353d62d1b41" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAXsAAACfCAYAAAAYnHkrAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ6SURBVHhe7dTRCcJAAAXBtGIzachq0o3VpI0ThMiBWEBuZ+D9ve/dHs99mJnZuhuvbYi9mdni27Yp9gCsZe672AMsSuwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gQOwBAsQeIEDsAQLEHiBA7AECxB4gRuwBFnN1fZ7YAyxmjvy1b+zNzOz+E3szs8D+xv48z3Ecx+cAwP39xn4fb53ZQHIf7J/EAAAAAElFTkSuQmCC" InformativeScreenshot="70da4ed4fda7f6aa6b6a79cf95ac9626.png" ScopeSelectorArgument="[&quot;&lt;wnd app='excel.exe' cls='XLMAIN' title='&quot;+DATE_todayconvert+&quot;_네이버웹툰크롤링.xlsx - Excel' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="8, 262, 34, 155" FriendlyName="'2'" FullSelectorArgument="[&quot;&lt;uia automationid='Grid' name='눈금' role='데이터 그리드' /&gt;&lt;uia name='&quot;+INT_clickcount.ToString+&quot;' role='행 머리글' tableCol='0' tableRow='&quot;+INT_clickcount.ToString+&quot;' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;uia automationid='Grid' name='눈금' role='데이터 그리드' /&gt;&lt;uia name='&quot;+INT_clickcount.ToString+&quot;' role='행 머리글' automationid='' check:fulltext='&quot;+INT_clickcount.ToString+&quot;' /&gt;&quot;]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACYAAACfCAYAAACV+KsTAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGSSURBVHhe7dw9TgJBAEBh72HlMazsPIIdCa0d0WhLZ8ENwJISln9YYsUZOATXGGWExTUEeLgKiW+Sr9jsFC8zs1vOxf3Tc1iPxWJxMlePtzm5sOl0GqVpGk0mk8x4PI5Go1E0HA4zg8Eg6vf7Ua/Xy3S73ajT6URJkmTa7XbUarV2h83n85NZB62HYfsYRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlGGUYZRhlG/aOwpBIuS9crd6E62zLnAAWHvYVqo7l5XkY+1EKam3OY4lcspxnKpUp43fput98Nm9XCzfmt2HK1zuaMfUobdx8H/7gtXCs8LEa9fPkAjlRs2A/O1HfFh2X/sI1ysmXuHsWGFcgwyjBqZ9jZXlG+7bL1v3K2YUv1en1VEsI7e8oJZse6M3YAAAAASUVORK5CYII=" SearchSteps="Selector, FuzzySelector" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NKeyboardShortcuts ActivateBefore="True" ClickBeforeMode="None" DisplayName="Keyboard Shortcuts" sap:VirtualizedContainerService.HintSize="434,188" sap2010:WorkflowViewState.IdRef="NKeyboardShortcuts_1" InScope="[Excel]" ScopeIdentifier="Excel" Shortcuts="[d(hk)][d(alt)]n[u(alt)][u(hk)][d(hk)]p[u(hk)][d(hk)]d[u(hk)]" Version="V3" />
+                    <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into '파일 이름(&amp;N)'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="434,227" sap2010:WorkflowViewState.IdRef="NTypeInto_2" InScope="[Excel]" ScopeIdentifier="Excel" Text="[localdesktop_1+&quot;\&quot;+DT_name_excel+&quot;.png[k(enter)]&quot;]" Version="V3">
+                      <uix:NTypeInto.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="215, 407, 328, 24" DesignTimeScaleFactor="1" FriendlyName="'파일 이름(N)'" FullSelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1148' /&gt;&lt;wnd ctrlid='1148' check:fulltext='파일 이름(N):' /&gt;" Guid="dd2e6718-64dd-45bc-ba01-176e39acf6b4" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUwAAAAcCAYAAAAKl4YcAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADISURBVHhe7dTRDYMgAEXRDuok7uQgboMT0JLY1kal759zkpcQ4Ps+SinVzMz+TzDNzMJ9gjnPs5mZXewymAD8EkyAkGAChAQTICSYACHBBAgJJkBIMAFCggkQEkxgWOu67qezqzfBBIa0bVudpqkuy7LffLW79tb+HAkmMKyraN7FshFMYGjHaPZi2QgmMLx3NHuxbAQT4KWFshfLRjABQoIJEBJMgJBgAoQEEyAkmAAhwQQI3QbTzMzOOwXTzMz6E0wzs2ilPgFKt2GeMPf+NwAAAABJRU5ErkJggg==" InformativeScreenshot="9fb51f0c3265cc523f456836ef54f7b8.png" ScopeSelectorArgument="&lt;wnd app='excel.exe' cls='#32770' title='그림 삽입' /&gt;" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive">
+                          <uix:TargetAnchorable.Anchors>
+                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                              <uix:Target DesignTimeRectangle="138, 411, 72, 15" ElementType="Text" FriendlyName="'파일 이름(&amp;N)'" FullSelectorArgument="&lt;wnd ctrlid='1090' title='파일 이름(&amp;amp;N):' /&gt;" FuzzySelectorArgument="&lt;wnd ctrlid='1090' title='파일 이름(&amp;amp;N):' check:text='파일 이름(&amp;amp;N):' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEwAAAATCAYAAAA6T+sJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGlSURBVFhH7ZbblYUgDEVtin6ohmbohVrsgCHxlZcCg37MLD7OWlcMkOwc8C7ruuapdk1gnZrAOjWBdYoAi9kvS14MuZDymkJ2PrLJqOhZrI/Xu+hdDonEWoJ1j/ku5ETeWfNTcGw/KsyTxH6hdodZwLBYn+M5lnJwV5F1YNCkKwZhkD2agB8qjTOBnTlCbgWsaArmsI9FzxtuSQGjSbIFLGBGklD0MVYtWM2vA+9zGKx3NHT77RWUCxiPtzUGbNBhULzsKN/fBmY6yRJryA5D5UyBiTkYy3PoA2Z1koyDKICvgB17Kak7UDZze+bQBTD1zFUBRhIGMNalP6JfHMl2ycLpcSvvTpc9xWm9AAw2MLqNqhUMiV8x6J67S7/AtffQ2lxbAQHr4V4yDvZtAfaYUEk89jusySH0SKvEG+bfquYceIb1Bx12q08c9iwL2NMdpo+3BCRAYE3ly8mAacdRvQTsviMjugMmPxQodR/KWDtP+LAxZ9N10P08h48dNvbve8xhoGe3WKpdA+3A/qr2y90CLAVuqzX4/wN7WRNYpyawLq35BwYZWh1tzBg1AAAAAElFTkSuQmCC" SearchSteps="Selector, FuzzySelector, Image" />
+                            </scg:List>
+                          </uix:TargetAnchorable.Anchors>
+                        </uix:TargetAnchorable>
+                      </uix:NTypeInto.Target>
+                    </uix:NTypeInto>
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;Top5&quot;).Cell(&quot;B&quot;+INT_clickcount.ToString)]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="434,168" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[DT_name_excel]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,101" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[DATE_converttoday + &quot;시트에 값을 넣었습니다.&quot;]" />
+                  </Sequence>
+                </ActivityAction>
+              </ueab:ExcelApplicationCard.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ueab:ExcelApplicationCard>
+          </Sequence>
+        </ActivityAction>
+      </ueab:ExcelProcessScopeX.Body>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ueab:ExcelProcessScopeX>
+  </Sequence>
+</Activity>

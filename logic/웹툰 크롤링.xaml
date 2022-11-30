@@ -1,0 +1,670 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="웹툰_크롤링" this:웹툰_크롤링.INT_clicount_webtton="1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="I_config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="I_DT_value_name" Type="InArgument(x:String)" />
+    <x:Property Name="STR_screenshot" Type="InArgument(ui:Image)" />
+    <x:Property Name="I_DATE_convert_webtton" Type="InArgument(x:String)" />
+    <x:Property Name="INT_clicount_webtton" Type="InArgument(x:Int32)" />
+    <x:Property Name="I_local_webtton" Type="InArgument(x:String)" />
+  </x:Members>
+  <this:웹툰_크롤링.I_DT_value_name>
+    <InArgument x:TypeArguments="x:String" />
+  </this:웹툰_크롤링.I_DT_value_name>
+  <this:웹툰_크롤링.STR_screenshot>
+    <InArgument x:TypeArguments="ui:Image" />
+  </this:웹툰_크롤링.STR_screenshot>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1285,8068</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>웹툰_크롤링_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="43">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
+      <x:String>UiPath.Platform.ResourceHandling</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="56">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Text.RegularExpressions</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.CodeDom</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="웹툰_크롤링" sap:VirtualizedContainerService.HintSize="904,8003" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="862,7913" sap2010:WorkflowViewState.IdRef="Sequence_26">
+      <Sequence.Variables>
+        <Variable x:TypeArguments="x:String" Name="STR_checkkr" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_table_1" />
+        <Variable x:TypeArguments="sd:DataTable" Name="DT_table_2" />
+        <Variable x:TypeArguments="x:Int32" Name="INT_limitcount" />
+        <Variable x:TypeArguments="x:String" Name="localdesktop" />
+      </Sequence.Variables>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetEnvironmentFolder DisplayName="Get Environment Folder" FolderPath="[localdesktop]" sap:VirtualizedContainerService.HintSize="800,71" sap2010:WorkflowViewState.IdRef="GetEnvironmentFolder_1" SpecialFolder="Desktop" />
+      <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: 네이버 웹툰 &gt; 요일별 웹툰 &gt; 전체웹툰" sap:VirtualizedContainerService.HintSize="800,7680" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" OpenMode="Always" ScopeGuid="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V2" WindowResize="Maximize">
+        <uix:NApplicationCard.Body>
+          <ActivityAction x:TypeArguments="x:Object">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="실행" sap:VirtualizedContainerService.HintSize="766,7454" sap2010:WorkflowViewState.IdRef="Sequence_29">
+              <Sequence.Variables>
+                <Variable x:TypeArguments="x:String" Name="DATE_before" />
+                <Variable x:TypeArguments="sd:DataTable" Name="DT_filter" />
+              </Sequence.Variables>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:MultipleAssign sap2010:Annotation.AnnotationText="1. STR_checkkr : 한글날짜 출력 ex)수, 목&#xA;2. DATE_before : 전날 날짜를 출력&#xA;3. DT_berforeconvert : 전날날짜를 yyyy.MM.dd 형식으로 변환" DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="724,198" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                <ui:MultipleAssign.AssignOperations>
+                  <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
+                    <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[STR_checkkr]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[DateTime.Parse(now.ToString).ToString("ddd",New CultureInfo("ko"))]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                    <ui:AssignOperation sap:VirtualizedContainerService.HintSize="334,32" sap2010:WorkflowViewState.IdRef="AssignOperation_2">
+                      <ui:AssignOperation.To>
+                        <OutArgument x:TypeArguments="x:String">[DATE_before]</OutArgument>
+                      </ui:AssignOperation.To>
+                      <ui:AssignOperation.Value>
+                        <InArgument x:TypeArguments="x:String">[DateTime.Parse(now.ToString).AddDays(-1).Tostring ("yyyy.MM.dd")]</InArgument>
+                      </ui:AssignOperation.Value>
+                    </ui:AssignOperation>
+                  </scg:List>
+                </ui:MultipleAssign.AssignOperations>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:MultipleAssign>
+              <Sequence DisplayName="웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="724,846" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <uix:NClick sap2010:Annotation.AnnotationText="공통형식이 ~요웹툰으로 시작된다&#xA;엄격한 선택기에서&#xA;&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;&#xA;&#xA;STR_checkkr : 한글 날짜를 출력" ClickType="Single" DisplayName="요일별 웹툰 클릭하기" sap:VirtualizedContainerService.HintSize="338,268" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/weekday" DesignTimeRectangle="694, 326, 56, 24" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'수요웹툰'" FullSelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl aaname='&quot;+STR_checkkr+&quot;요웹툰' tag='A' type='' class='' check:innerText='&quot;+STR_checkkr+&quot;요웹툰' /&gt;&quot;]" Guid="f1a01dc1-97f4-49cb-bfd4-9ee45bbac92e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADwAAAAcCAYAAAA9UNxEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADcSURBVFhH7ZQLCsMwDEN31Fw+58gITGCMLTsjg+H6gWgaf0Whr/Uw2nB12rDHGONzusvuCwGcvZmyxhIjZTjTCMjBUhb6Xudn604IDcvm0SAWt2L6Du/6qdn3TAzXsFfMmrJhrEb3xJnVfMvVnxZb5GTJjGEmxlXDG2uBLQsvTz9vYhqWCzB5yBjLA5kcgNmRPNJfmDXRyNyojsWzM092+wvDTBb63suzuGYYC0bSWHfAi7GaiJ984RN2XyYLK0+KkTZchTZcnTZcnTZcnTZcnTZcnecZnnOu52iuNwZm9e9GkHjcAAAAAElFTkSuQmCC" InformativeScreenshot="a0d1ee7e9373f65b9817e2d84a35814b.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 전체웹툰' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                  </uix:NClick.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NClick>
+                <uix:NClick ClickType="Single" DelayAfter="2" DisplayName="리스트형으로 보기 클릭하기" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                  <uix:NClick.Target>
+                    <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/weekdayList?week=thu" DesignTimeRectangle="1202, 912, 24, 24" DesignTimeScaleFactor="1.25" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl aaname='리스트형' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='리스트형' tag='IMG' type='' class='' /&gt;" Guid="026c91b4-c891-4be7-b8ec-89dccdca85c3" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADVSURBVEhL1ZVRDoQgDES9//G4hr9+LnQd60hLBIKRbPbpaBzrWDDqIhOZGx5CkLdFlnVdBbImSSnu2yjpWCzqX+DkWeDCt20TiGZKNkYDvEdMuOF34QBhI7JUw6N8TltvAK8nHx4PjxSd56GWHdUYCFf2wT7svDEtCCW4CEd3Akco1qfh8HpiuO470+KL+6Au1zbCWcIL4PVUNgGP3DzQ1ovjYROWarh+S5RJneeORgWq4a6HYlby24vR3X9XQL3zItCBc7FVkKeSzA3Hwdsi//qDFvkC0ob2yJf01TQAAAAASUVORK5CYII=" InformativeScreenshot="aacdd67d6189806b7ba0cddca9f345b5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 목요 웹툰' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                      <uix:TargetAnchorable.Anchors>
+                        <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                          <uix:Target DesignTimeRectangle="1180, 912, 24, 24" ElementType="Icon" FriendlyName="'IMG'" FullSelectorArgument="&lt;webctrl aaname='썸네일형' tag='IMG' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='썸네일형' tag='IMG' type='' class='' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAABcAAAAXCAYAAADgKtSgAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACcSURBVEhL1ZJLDoAgDAVNvJTX8cpETsGWpRQtHy0RPwFK4iOzeYtJQztYxvSRCyGak8iVUtWgJ+Yi11pXEeUA8FM55lFupjHhrqOgx9jVOQ/5ImVePgeCKNdR/OTGOZnkPu9ywl1HQTnsD/MoL+GzPDdlrqPEb0lOseWf+7lZF2qYFgofTrGEc3K2a/HhmTzY+8ixbM0h5wij3NoNwWGFKKuDmrMAAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                        </scg:List>
+                      </uix:TargetAnchorable.Anchors>
+                    </uix:TargetAnchorable>
+                  </uix:NClick.Target>
+                </uix:NClick>
+                <uix:NExtractData sap2010:Annotation.AnnotationText="리스트형 데이터 가져와서 데이터 테이블로 저장하기&#xA;제목, 업데이트 주기, URL, 업데이트 일시를 저장한다" AppendResults="False" ContinueOnError="True" DataTable="[DT_table_1]" DisplayName="데이터 테이블로 추출하기" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Table'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목' ReferenceName='제목' ReferenceIdx='0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='제목 Src' ReferenceName='제목 Src' ReferenceIdx='1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Alt Text' ReferenceName='제목 Alt Text' ReferenceIdx='2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='제목 Url' ReferenceName='제목 Url' ReferenceIdx='3'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='별점' ReferenceName='별점' ReferenceIdx='4'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림' ReferenceName='글/그림' ReferenceIdx='5'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' IsDeleted='true' Name='글/그림 Url' ReferenceName='글/그림 Url' ReferenceIdx='6'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='업데이트 일시' ReferenceName='업데이트 일시' ReferenceIdx='7'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract-table get_columns_name='1' get_empty_columns='1' columns_name_source='Longest'&gt;&lt;column name='제목' attr='text' name2='제목 Src' attr2='src' name3='제목 Alt Text' attr3='alt' name4='제목 Url' attr4='href' /&gt;&lt;column name='별점' attr='text' /&gt;&lt;column name='글/그림' attr='text' name2='글/그림 Url' attr2='href' /&gt;&lt;column name='업데이트 일시' attr='text' /&gt;&lt;/extract-table&gt;" sap:VirtualizedContainerService.HintSize="338,208" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                  <uix:NExtractData.Target>
+                    <uix:TargetAnchorable DesignTimeRectangle="480, 512, 694, 3338" DesignTimeScaleFactor="1" FriendlyName="'목요 추천'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;" Guid="0da5fb57-328e-4a8f-b0e4-fad551fae265" InformativeScreenshot="eedf935d9b97256981ef466318ca318e.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 목요 웹툰' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                  </uix:NExtractData.Target>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </uix:NExtractData>
+              </Sequence>
+              <ui:FilterDataTable DataTable="[DT_table_1]" DisplayName="Filter Data Table" FilterRowsMode="Remove" sap:VirtualizedContainerService.HintSize="724,170" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[DT_filter]" SelectColumnsMode="Remove">
+                <ui:FilterDataTable.Filters>
+                  <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                    <ui:FilterOperationArgument BooleanOperator="And" Operator="NOTCONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:Int32">[3]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">[DATE_before]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                    <ui:FilterOperationArgument BooleanOperator="Or" Operator="CONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">["휴재"]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                    <ui:FilterOperationArgument BooleanOperator="Or" Operator="CONTAINS">
+                      <ui:FilterOperationArgument.Column>
+                        <InArgument x:TypeArguments="x:Int32">[0]</InArgument>
+                      </ui:FilterOperationArgument.Column>
+                      <ui:FilterOperationArgument.Operand>
+                        <InArgument x:TypeArguments="x:String">["18세 이상 이용가능"]</InArgument>
+                      </ui:FilterOperationArgument.Operand>
+                    </ui:FilterOperationArgument>
+                  </scg:List>
+                </ui:FilterDataTable.Filters>
+                <ui:FilterDataTable.SelectColumns>
+                  <scg:List x:TypeArguments="InArgument" Capacity="4">
+                    <x:Null />
+                  </scg:List>
+                </ui:FilterDataTable.SelectColumns>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:FilterDataTable>
+              <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="0열 제목&#xA;1열 업데이트 주기&#xA;2열 url&#xA;3열 업데이트 일시&#xA;" DataTable="[DT_filter]" DisplayName="For Each Row in Data Table_데이터테이블 반복" sap:VirtualizedContainerService.HintSize="724,6028" sap2010:WorkflowViewState.IdRef="ForEachRow_2">
+                <ui:ForEachRow.Body>
+                  <ActivityAction x:TypeArguments="sd:DataRow">
+                    <ActivityAction.Argument>
+                      <DelegateInArgument x:TypeArguments="sd:DataRow" Name="Row" />
+                    </ActivityAction.Argument>
+                    <Sequence sap2010:Annotation.AnnotationText="" DisplayName="본문" sap:VirtualizedContainerService.HintSize="690,5815" sap2010:WorkflowViewState.IdRef="Sequence_25">
+                      <Sequence.Variables>
+                        <Variable x:TypeArguments="x:String" Name="STR_url_1" />
+                        <Variable x:TypeArguments="x:String" Name="STR_url" />
+                        <Variable x:TypeArguments="x:String" Name="STR_url_2" />
+                      </Sequence.Variables>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <Assign DisplayName="제목을 변수에 저장" sap:VirtualizedContainerService.HintSize="648,71" sap2010:WorkflowViewState.IdRef="Assign_17">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:String">[I_DT_value_name]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:String">[row(0).ToString]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <uix:NGoToUrl sap2010:Annotation.AnnotationText="해당 웹툰 url로 들어간다" DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="648,122" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[Row(2).ToString]" Version="V3">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </uix:NGoToUrl>
+                      <Assign sap2010:Annotation.AnnotationText="상위 5개까지 제한하는 변수를 만든다" DisplayName="5개까지 수집 변수" sap:VirtualizedContainerService.HintSize="648,102" sap2010:WorkflowViewState.IdRef="Assign_20">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[INT_limitcount]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[INT_limitcount +1]</InArgument>
+                        </Assign.Value>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </Assign>
+                      <Assign sap:VirtualizedContainerService.HintSize="648,71" sap2010:WorkflowViewState.IdRef="Assign_21">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="x:Int32">[INT_clicount_webtton]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="x:Int32">[INT_clicount_webtton +1]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <If sap2010:Annotation.AnnotationText="1.INT_limitcount : 5개까지 제한하는 카운트 변수이다&#xA;&#xA;카운트 변수를 사용해 5보다 작거나 같은지 확인한다&#xA;&#xA;Then :  상위 5개 웹툰을 크롤링할때까지 작업을 반복한다&#xA;Else :  상위 5개의 웹툰을 크롤링하여 작업을 종료한다" Condition="[INT_limitcount &lt;= 5]" DisplayName="If_상위 웹툰 5개만 가져오기" sap:VirtualizedContainerService.HintSize="648,5197" sap2010:WorkflowViewState.IdRef="If_2">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence sap:VirtualizedContainerService.HintSize="566,4638" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="x:String" Name="variable1" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If sap2010:Annotation.AnnotationText="1. DT_value_name : 웹툰 제목이 나오는 변수이다&#xA; &#xA;휴재와 18세 이상 제외한 웹툰 중 제목에 컷툰이 들어간 웹툰이 있는지 확인한다&#xA;&#xA;Then : 컷툰이 포함되면 컷툰을 제목에서 잘라주고 컷툰을 클릭한다&#xA;Else : 컷춘이 포함되지 않은 웹툰이므로 웹툰을 클릭한다&#xA;" Condition="[I_DT_value_name.Contains(&quot;컷툰&quot;)]" DisplayName="If_웹툰 이름에 컷툰이 들어가 있는지 확인" sap:VirtualizedContainerService.HintSize="524,4245" sap2010:WorkflowViewState.IdRef="If_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence sap2010:Annotation.AnnotationText="" sap:VirtualizedContainerService.HintSize="442,2133" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign sap2010:Annotation.AnnotationText="컷툰이 들어가면 컷툰에서 잘라준다" DisplayName="컷툰 분할 변수" sap:VirtualizedContainerService.HintSize="400,101" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="x:String">[I_DT_value_name]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="x:String">[split(I_DT_value_name,"컷툰")(0).Trim]</InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
+                                  <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" AutoCloseAfter="00:00:00" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="400,94" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[I_DT_value_name]" />
+                                  <Sequence DisplayName="컷툰 웹툰일 때 주소가 그냥 웹툰과 다르다" sap:VirtualizedContainerService.HintSize="400,1768" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ClickType="Single" DisplayName="Click '이미지'" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_3" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/list?titleId=795643&amp;weekday=mon" DesignTimeRectangle="494, 670, 71, 41" DesignTimeScaleFactor="1" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='mask' aaname='' /&gt;" Guid="4973f224-cb9c-41a3-9229-a688b1f7c8b9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEsAAAAtCAYAAADm45atAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAABJBSURBVGhD7dpzsDbH1gXwqGLbTiqu2LZt27Zt27Zt27Zt20nf++t611Sfk5O6+er7N13VNTM9Mz3da6+99u5+nv7Kv+Ufl3/B+j+UDqwvv/yyvPXWW2Xaaactm2yySXn//ffLiy++WHbYYYcy1lhjlVNOOaWcd9555dxzzy3nn3/+X+oFF1zQHc8555xy6KGHlmWWWabcdddd5ZVXXikff/xx+fzzz8trr71WjjnmmLL88suX+eabrww66KBl6qmnLrvssks56KCDunrwwQfXusoqq5RZZ5217LfffmXZZZctBx54YHfv7+ohhxzSVeNIdX3AAQeUfffdtxx99NHltttuq2P74IMPyq233lpWW221OkZYfPHFF+Xqq68u999/fz+EGrA8dNJJJ5XBBx+8XHXVVeXXX38t77zzTrn00kvLOOOMU4G68sor671UnbU1bQBeaKGFyu23315effXV8v3335fffvutfPPNN3VQO+64YwVnwQUXLGOMMUYZZZRR6vkGG2xQjj322B51rbXWKlNOOWVZfPHFy1ZbbVWB7v1MW4877riu5vr444+v1bn3jzrqqHLqqaeWxx9/vHz11Vfl559/rmNcYYUVyr333tsPkVLee++9cuSRR/a7asC66KKLyoQTTlg23HDD+uKHH35Ynn/++bLwwguX5ZZbrn4Icy655JI+AdN+xRVXlMsuu6w+D+Rnn322GsFg1LfffrvstttuZdNNN63WNeiNNtqoDDnkkGWYYYYpU0wxRZ1UO3mT8+0TTjihR/vfVc/2VVvAfPeMM86orHnzzTfrXH/55Zdy/fXXl1VXXbX8/vvv/VApdawpHVgzzzxz/diPP/5YJ/bJJ59US88+++xl7rnnrmzREZrvv//+Zbvttiunn356nfSuu+5adt999wrYnnvuWQ477LDyxBNPVNfTH1Z9/fXX5fLLLy8rrrhiZZZ+WA1YE088cXXL6aef/i9g/ZPaGxg17S1IbfuFF15YnnvuufLtt9/W8ak//fRTNdgLL7zQD5VSPSqlh2Ypf/75ZwVrm222qZqzyCKL1Ip5rAGIM888s5x99tllySWX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" InformativeScreenshot="2f6f02fb0742eb09977d6bcc021b653a.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="480, 586, 99, 32" ElementType="Text" FriendlyName="'이미지'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TH' class='' aaname='이미지' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGcAAAAkCAYAAACUjSQ7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVGhD7dtBCsMgFADRnto7eiqLiy9WVFwEMsV58CEas3Hosp8irBYn5+zAxl8OmHHAjANmHDDjgBkHzDhgxgEzDphxwIwDho2TUmrT69f9mZgwPs8m3lEh44wX1q9Xz9XuXXW6R2GcyR6FcSZ7FNfEifXuGxrjDGuS6+JUu3MkV8Q5PUeDjFPVS4vpjRc7Tlg9h9ibvaPAxlk5vcynz73h7+LcxDhgxgEzDphxwIwDZhww44AZB8w4YC3O7P8hzrvzE0csxsEq5QuAtqLyHXPlWwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                    <uix:NTakeScreenshot DisplayName="Take Screenshot '대학원 탈출일지'" FileName="[I_DT_value_name+&quot;.png&quot;]" FileNameMode="DateTime" sap:VirtualizedContainerService.HintSize="338,192" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_3" OutImage="[STR_screenshot]" SaveScreenshotTo="Image" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NTakeScreenshot.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/detail?titleId=790713&amp;no=78&amp;weekday=tue" DesignTimeRectangle="480, 327, 218, 120" DesignTimeScaleFactor="1" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl class='mask' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='mask' tag='SPAN' type='' aaname='' /&gt;" Guid="a551e0bb-230c-4118-885b-c9b8af68b759" InformativeScreenshot="78eecd700bc55c13497ad0981260744e.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="713, 329, 138, 20" ElementType="Text" FriendlyName="'대학원 탈출일지'" FullSelectorArgument="&lt;webctrl class='title' tag='SPAN' /&gt;" FuzzySelectorArgument="[&quot;&lt;webctrl class='title' tag='SPAN' type='' aaname='&quot;+I_DT_value_name+&quot;' check:innerText='&quot;+I_DT_value_name+&quot;' /&gt;&quot;]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAI4AAAAYCAYAAAAswsVWAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHySURBVGhD7ZULasQwDERz+D1be6y0Joh6hT4jRQ5uqwcDJRqPZFewx9k0CXpxmhS9OE2KgsX5OF/HcR7H6/svCarPkrxeToTKLIlovvQGkfMoz71hYnF4YNWwaA75ZvEz0ZmkTEnVd0ZB7jyonMvOYovjPeAI4YFSAy9nlpXDsXp53yxW+MmDSsuK3M/7jmqc17IulMWRzRfcg5xB8HKs+t2ZVvuJyj5SLZLvee36A4tD9VmS1/NZfaIzcaTekni+VJP48b8+57PefNY9pJrl53heu754caSa5s/0HkR6aFT7qT6LeyMeqY9U8+aa8bx2feHiWFlSDek9IN+sSG+J1f47SL20/pG5PK9dv7E4XJFLSDWkN0o0S7uTJ+3Od4XkSndD7335fn4241m/4KeKvuOyH6SCbP4uc12+jRdnQPVZ8UHfQXsiWU+yw1x8Bm0me9YHFgclkuN5szPROVRW/u5Z5NHeSvt+EVgcPrzXeCW8J5+NtGqmyjs/maXVpe92lrI4mkYID7QaeHmS5EHfsS/l1+9Smf9UVvTNbD9bHIRYAxwkB+2VnYnOoUJmRbUyK/Nu9pk/ujhZKvN3zUKxe/bivFGZv2sWit0zsTicqkshOeRBFZ2pMn/XLBT7/1GwOM1/pBenSdGL06ToxWkSnOcX4iTB6AfQwSoAAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NTakeScreenshot.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NTakeScreenshot>
+                                    <ui:SaveImage DisplayName="Save Image" FileName="[localdesktop+ &quot;\&quot;+I_DT_value_name+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="338,142" sap2010:WorkflowViewState.IdRef="SaveImage_1" Image="[STR_screenshot]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:SaveImage>
+                                    <uix:NGetText sap2010:Annotation.AnnotationText="https://comic.naver.com/webtoon/detail?titleId=783769&amp;no=54&amp;weekday=wed&#xA;을 가져온다" DisplayName="url을 가져온다" sap:VirtualizedContainerService.HintSize="338,223" sap2010:WorkflowViewState.IdRef="NGetText_1" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" TextString="[STR_url]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="150, 48, 1570, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'comic.naver.com/webtoon…'" FullSelectorArgument="[&quot;&lt;ctrl name='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰 - Chrome' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='주소창 및 검색창' role='editable text' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;ctrl name='&quot;+ I_DT_value_name+&quot; :: 네이버 웹툰 - Chrome' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='주소창 및 검색창' role='editable text' automationid='' /&gt;&quot;]" Guid="35ccaec1-0f59-47bb-95b8-44542e5cd848" InformativeScreenshot="d6c999e6e4fb641b9e3c9c713a4e11aa.png" ScopeSelectorArgument="[&quot;&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='&quot;+ I_DT_value_name+&quot; :: 네이버 웹툰 - Chrome' /&gt;&quot;]" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+                                      </uix:NGetText.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NGetText>
+                                    <Assign sap2010:Annotation.AnnotationText="url에서 =를 기준으로 https://comic.naver.com/webtoon/detail?titleId= 뒤에 숫자를 가져온다" DisplayName="url 분할 변수_1" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[STR_url_1]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Regex.Replace(Split(STR_url,"=")(1),"[^0-9]","").ToString]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <Assign sap2010:Annotation.AnnotationText="https://comic.naver.com/webtoon/detail?titleId=783769&amp;no= 뒤에 숫자를 가져온다" DisplayName="url 분할 변수_2" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[STR_url_2]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Regex.Replace(Split(STR_url,"=")(2),"[^0-9]","").ToString]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <uix:NClick ClickType="Single" DisplayName="Click 'BEST댓글'을 클릭한다" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_4" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/comment/comment?titleId=641253&amp;no=418" DesignTimeRectangle="497, 443, 71, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'BEST댓글'" FullSelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl class='u_cbox_sort_label' parentid='cbox_module_wai_u_cbox_sort_option_tab1' tag='SPAN' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl class='u_cbox_sort_label' parentid='cbox_module_wai_u_cbox_sort_option_tab1' tag='SPAN' type='' aaname='BEST댓글' check:innerText='BEST댓글' /&gt;&quot;]" Guid="922e8a7a-670b-4193-8cd9-0863902face9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEsAAAAaCAYAAAD/nKG4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVFhH7ZTRDcIwDET5YCkW7ACs0iEYgE+GCfKHhUns2BdIUJGfZKmqzxfnpPZUkjAZFkCGBZBhAWRYABkWwB+FdS/bfinn/Vpub8813POqnRVhWSYjB9Yzmj6ikUX63o7cq59R7FklLCmyBpFlEF9m5FzZ8/x72LNOWIT2PrpMTzfSi8zI8vbTsM+YHBaBaBlkF0b2Rs4k+nMLPkOC9dGZkXNlT9PJHZB6eQR+8FTW0lppF2HkXESHnMtFM9b8Zyz4DDW8+dn+YwTCIureN5ZBzvNA9Kz1qvWaHBbiKYn6M6i+h+214DMcmcf9t0d0hnVetT4TfvBUEX3vUpGLS0/Wae9qIt46IqyjgASiaWSvV633AcP6HRkWQIYFkGEBZFgAGRZAhhWmlCfWzCszjgDQFAAAAABJRU5ErkJggg==" InformativeScreenshot="15b031c90f1ba113c572d992794ce73a.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                    <uix:NExtractData sap2010:Annotation.AnnotationText="1. 댓글을 데이터 데이블로 가져온다&#xA;2. 분할한 숫자를 링크에 변수로 입력해 댓글을 가져올 수 있게 한다" AppendResults="False" ContinueOnError="True" DataTable="[DT_table_2]" DisplayName="Extract Table Data- ExtractDataTable2" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='베스트댓글내용'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='좋아요'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column2' Name='싫어요'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='5' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='em' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='5' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='2' /&gt;&lt;webctrl tag='em' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="338,223" sap2010:WorkflowViewState.IdRef="NExtractData_2" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NExtractData.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="480, 713, 694, 2058" DesignTimeScaleFactor="1" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl parentid='cbox_module_wai_u_cbox_content_wrap_tabpanel' tag='UL' /&gt;&quot;]" Guid="0e25ce0c-d1ca-4c4d-a056-458e1a0c471c" InformativeScreenshot="8746c14824ae2fdf05c44daead9bd1f5.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                                      </uix:NExtractData.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NExtractData>
+                                  </Sequence>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence sap:VirtualizedContainerService.HintSize="442,1832" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Sequence DisplayName="컷툰 아닌 웹툰 댓글 가져오기" sap:VirtualizedContainerService.HintSize="400,1742" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                    <uix:NClick ClickType="Single" DisplayName="Click '이미지'" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_5" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/list?titleId=758037&amp;weekday=mon" DesignTimeRectangle="494, 630, 71, 41" DesignTimeScaleFactor="1" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='SPAN' class='mask' aaname='' /&gt;" Guid="84de804a-5672-4303-b0fd-8090d2b54de3" ImageBase64="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" InformativeScreenshot="ef070daab4036f9c8c39b9849f637858.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="480, 546, 99, 32" ElementType="Text" FriendlyName="'이미지'" FullSelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl tableRow='1' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='TABLE' /&gt;&lt;webctrl type='' tag='TH' class='' aaname='이미지' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAGcAAAAkCAYAAACUjSQ7AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADLSURBVGhD7dtBCsMgFADRnto7eiqLiy9WVFwEMsV58CEas3Hosp8irBYn5+zAxl8OmHHAjANmHDDjgBkHzDhgxgEzDphxwIwDho2TUmrT69f9mZgwPs8m3lEh44wX1q9Xz9XuXXW6R2GcyR6FcSZ7FNfEifXuGxrjDGuS6+JUu3MkV8Q5PUeDjFPVS4vpjRc7Tlg9h9ibvaPAxlk5vcynz73h7+LcxDhgxgEzDphxwIwDZhww44AZB8w4YC3O7P8hzrvzE0csxsEq5QuAtqLyHXPlWwAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                    <uix:NTakeScreenshot DisplayName="Take Screenshot '뷰티풀 군바리'" FileName="[I_DT_value_name+&quot;.png&quot;]" FileNameMode="DateTime" sap:VirtualizedContainerService.HintSize="338,192" sap2010:WorkflowViewState.IdRef="NTakeScreenshot_2" OutImage="[STR_screenshot]" SaveScreenshotTo="Image" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NTakeScreenshot.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/webtoon/detail?titleId=648419&amp;no=362&amp;weekday=mon" DesignTimeRectangle="480, 327, 218, 120" DesignTimeScaleFactor="1" FriendlyName="'SPAN'" FullSelectorArgument="&lt;webctrl class='mask' tag='SPAN' /&gt;" FuzzySelectorArgument="&lt;webctrl class='mask' tag='SPAN' type='' aaname='' /&gt;" Guid="bdf8eab7-dc18-497c-8e7d-340e2737be67" InformativeScreenshot="ab43931cdc818ddac88ef2158fb6fdc6.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive">
+                                          <uix:TargetAnchorable.Anchors>
+                                            <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                                              <uix:Target DesignTimeRectangle="713, 329, 119, 20" ElementType="Text" FriendlyName="'뷰티풀 군바리'" FullSelectorArgument="&lt;webctrl class='title' tag='SPAN' /&gt;" FuzzySelectorArgument="[&quot;&lt;webctrl class='title' tag='SPAN' type='' aaname='&quot;+I_DT_value_name+&quot;' check:innerText='&quot;+I_DT_value_name+&quot;' /&gt;&quot;]" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHsAAAAYCAYAAADap4KLAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGDSURBVGhD7ZSBbgMhDEP5+Pu27rNYqwqNU4OxIXC7wpMiTUpw4rO6EDfLsMNeiB32QvyjsB/xCCGGcDz/WglP31irEDZ7wLxD//pqKbepO2b4VsBaA8NmP1x6q5guzSoaPTC+2R4zj4rVqobNFmsMocyXZtWdraA9aq/1Zl1rwi+bNdE7r77vodW31Wu9W9e6Udiprxa7X6HVt9Wr+S6ha9303/iV1O5kvl3+ttW39Q5rFcL2gDH9qnRYq+nZ1O5EfavHzKNitaaEbS/+pDTPGGaqdIe3PvJt9az9jJYFnr9B2DVa37F4+rB66jwCz2dhp8HeSot8Dy3T+o7F04fVU+cReL7yyy49Zo7wPfRNmmGL3Y3w9GH11HkEnr8w7NR/1/HDaLJcqXX2ZVeuhfRru8+7at9wQtio8vdemnkhLQvrBuauHpA+45e/dWDYKozmiL05o/UtPHdirR32idH6Fp47sdZNw2ZLvW+0voXnt8RalbA338QOeyF22Auxw16GGH8BllNPfOhITioAAAAASUVORK5CYII=" SearchSteps="FuzzySelector" />
+                                            </scg:List>
+                                          </uix:TargetAnchorable.Anchors>
+                                        </uix:TargetAnchorable>
+                                      </uix:NTakeScreenshot.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NTakeScreenshot>
+                                    <ui:SaveImage DisplayName="Save Image" FileName="[localdesktop+ &quot;\&quot;+I_DT_value_name+&quot;.png&quot;]" sap:VirtualizedContainerService.HintSize="338,142" sap2010:WorkflowViewState.IdRef="SaveImage_2" Image="[STR_screenshot]">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </ui:SaveImage>
+                                    <uix:NGetText sap2010:Annotation.AnnotationText="https://comic.naver.com/webtoon/detail?titleId=783769&amp;no=54&amp;weekday=wed&#xA;을 가져온다" DisplayName="Get Text 'comic.naver.com/webtoon…'" sap:VirtualizedContainerService.HintSize="338,223" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" TextString="[STR_url]" Version="V3">
+                                      <uix:NGetText.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="150, 48, 1538, 24" DesignTimeScaleFactor="1" ElementType="InputBox" FriendlyName="'comic.naver.com/webtoon…'" FullSelectorArgument="[&quot;&lt;ctrl name='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰 - 오디오 재생 - Chrome' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='주소창 및 검색창' role='editable text' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;ctrl name='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰 - 오디오 재생 - Chrome' role='pane' /&gt;&lt;ctrl name='Chrome' role='pane' /&gt;&lt;ctrl name='주소창 및 검색창' role='editable text' automationid='' /&gt;&quot;]" Guid="b238cd77-67d6-4c6c-836b-56e5df3d97ad" InformativeScreenshot="8858a65fac503ddd7f91fc4b994e3d09.png" ScopeSelectorArgument="[&quot;&lt;wnd app='chrome.exe' cls='Chrome_WidgetWin_1' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰 - Chrome' /&gt;&quot;]" SearchSteps="Selector, FuzzySelector" Version="V1" Visibility="Interactive" />
+                                      </uix:NGetText.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NGetText>
+                                    <Assign sap2010:Annotation.AnnotationText="url에서 =를 기준으로 https://comic.naver.com/webtoon/detail?titleId= 뒤에 숫자를 가져온다" DisplayName="url 분할 변수_1" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_7">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[STR_url_1]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Regex.Replace(Split(STR_url,"=")(1),"[^0-9]","").ToString]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <Assign sap2010:Annotation.AnnotationText="https://comic.naver.com/webtoon/detail?titleId=783769&amp;no= 뒤에 숫자를 가져온다" DisplayName="url 분할 변수_2" sap:VirtualizedContainerService.HintSize="338,127" sap2010:WorkflowViewState.IdRef="Assign_8">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:String">[STR_url_2]</OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:String">[Regex.Replace(Split(STR_url,"=")(2),"[^0-9]","").ToString]</InArgument>
+                                      </Assign.Value>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </Assign>
+                                    <uix:NClick ClickType="Single" DisplayName="Click 'BEST댓글'" sap:VirtualizedContainerService.HintSize="338,166" sap2010:WorkflowViewState.IdRef="NClick_6" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NClick.Target>
+                                        <uix:TargetAnchorable BrowserURL="https://comic.naver.com/comment/comment?titleId=641253&amp;no=418" DesignTimeRectangle="497, 443, 71, 22" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'BEST댓글'" FullSelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl class='u_cbox_sort_label' parentid='cbox_module_wai_u_cbox_sort_option_tab1' tag='SPAN' /&gt;&quot;]" FuzzySelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl class='u_cbox_sort_label' parentid='cbox_module_wai_u_cbox_sort_option_tab1' tag='SPAN' type='' aaname='BEST댓글' check:innerText='BEST댓글' /&gt;&quot;]" Guid="922e8a7a-670b-4193-8cd9-0863902face9" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEsAAAAaCAYAAAD/nKG4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAErSURBVFhH7ZTRDcIwDET5YCkW7ACs0iEYgE+GCfKHhUns2BdIUJGfZKmqzxfnpPZUkjAZFkCGBZBhAWRYABkWwB+FdS/bfinn/Vpub8813POqnRVhWSYjB9Yzmj6ikUX63o7cq59R7FklLCmyBpFlEF9m5FzZ8/x72LNOWIT2PrpMTzfSi8zI8vbTsM+YHBaBaBlkF0b2Rs4k+nMLPkOC9dGZkXNlT9PJHZB6eQR+8FTW0lppF2HkXESHnMtFM9b8Zyz4DDW8+dn+YwTCIureN5ZBzvNA9Kz1qvWaHBbiKYn6M6i+h+214DMcmcf9t0d0hnVetT4TfvBUEX3vUpGLS0/Wae9qIt46IqyjgASiaWSvV633AcP6HRkWQIYFkGEBZFgAGRZAhhWmlCfWzCszjgDQFAAAAABJRU5ErkJggg==" InformativeScreenshot="15b031c90f1ba113c572d992794ce73a.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+                                      </uix:NClick.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NClick>
+                                    <uix:NExtractData sap2010:Annotation.AnnotationText="컷툰과 메타데이터 정보가 달라져서 따로 해준다" AppendResults="False" ContinueOnError="True" DataTable="[DT_table_2]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='베스트댓글내용'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='좋아요'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column2' Name='싫어요'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='span' idx='2' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='em' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='li' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='4' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='2' /&gt;&lt;webctrl tag='em' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="338,197" sap2010:WorkflowViewState.IdRef="NExtractData_3" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="75dea394-2cad-47f6-99f5-6acb58a00157" Version="V3">
+                                      <uix:NExtractData.Target>
+                                        <uix:TargetAnchorable DesignTimeRectangle="480, 642, 694, 2220" DesignTimeScaleFactor="1" ElementType="List" FriendlyName="'UL'" FullSelectorArgument="[&quot;&lt;webctrl src='/comment/comment?titleId=&quot;+STR_url_1+&quot;&amp;amp;no=&quot;+STR_url_2+&quot;' tag='IFRAME' /&gt;&lt;webctrl parentid='cbox_module_wai_u_cbox_content_wrap_tabpanel' tag='UL' /&gt;&quot;]" Guid="dc1952b1-27e2-4725-b942-c8a8994d56d4" InformativeScreenshot="745ba678442c144be36e8703266fd5a8.png" ScopeSelectorArgument="[&quot;&lt;html app='chrome.exe' title='&quot;+I_DT_value_name+&quot; :: 네이버 웹툰' /&gt;&quot;]" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                                      </uix:NExtractData.Target>
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                    </uix:NExtractData>
+                                  </Sequence>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="logic\excel.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="524,122" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="logic\excel.xaml">
+                              <ui:InvokeWorkflowFile.Arguments>
+                                <InArgument x:TypeArguments="x:String" x:Key="I_DT_value">[I_DT_value_name]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="DATE_todayconvert">[I_DATE_convert_webtton]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="DT_table_w2">[DT_table_2]</InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="INT_limit">[INT_limitcount]</InArgument>
+                                <InArgument x:TypeArguments="sd:DataTable" x:Key="DT_filter_2" />
+                                <InArgument x:TypeArguments="x:String" x:Key="localdesktop_1">[localdesktop]</InArgument>
+                                <InArgument x:TypeArguments="x:Int32" x:Key="INT_clickcount">[INT_clicount_webtton]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="local_excel">[I_local_webtton]</InArgument>
+                                <InArgument x:TypeArguments="x:String" x:Key="DT_name_excel">[I_DT_value_name]</InArgument>
+                              </ui:InvokeWorkflowFile.Arguments>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:InvokeWorkflowFile>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="524,101" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;현재 웹툰 : &quot; +I_DT_value_name +&quot; &quot;+  INT_limitcount.ToString+&quot;개 입력했습니다&quot;]">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:LogMessage>
+                          </Sequence>
+                        </If.Then>
+                        <If.Else>
+                          <Sequence sap:VirtualizedContainerService.HintSize="400,294" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="358,101" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;상위 5개가 입력되어 작업을 종료합니다.&quot;]" />
+                            <ui:Break sap2010:Annotation.AnnotationText="엑셀에 작업이 5개까지 입력되면 작업을 끝내준다" sap:VirtualizedContainerService.HintSize="358,63" sap2010:WorkflowViewState.IdRef="Break_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:Break>
+                          </Sequence>
+                        </If.Else>
+                      </If>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEachRow.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEachRow>
+            </Sequence>
+          </ActivityAction>
+        </uix:NApplicationCard.Body>
+        <uix:NApplicationCard.TargetApp>
+          <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJCSURBVFhHxZc9aBRBFIBfNIKilYJlQGzFFBoUGwstFGxSBERIyO7MbEKQoFiIIHJY2PnTWBjEKmpjpY1FQmzsgkl2Z+ZCCARMLwki/hA8384+9X7e3V6yO/rBxxXzfmbnZmd3wStro3tBqwFUgRaPwYbvwch5Gi2Z6sghMOIcNriBTkMcaPzdQmtNTlNGAZblEbBqEKy8iwVfox/rGuQ5SVW6YD7aAzrsB6NGcQkfYfI7iNVmU8HtaeVpqs5golMYNIk+w+VcABP8aEgu7hasX99H3Ri0eMkklWcsP1CnNhgxxCaWZviEOrXBTBzAWX7lk0swvR1zseEbNrkME3mcunTAyKAlsRSDLzBX6aUuHTDiICZwB0gx01Owa0w4yxYpopYPqXoXaHGVLVJELa5Q9SasGHYnXYPiFlukkHgLGllpVNxJl/ttFvBftLgC6jIz8G/U8im4s7noA2bnRr/3wRQz6F8rjmUTSNQZNsCrwWeoDe3OJpCSiBU+0JNazlBnwqrbbKA31T3qTJioD5+EP/lgDybqEnWuI10WLtiHS+OHqWsdVo6wwaUrVqljE0vD+93uZJNK1IYvqCODeyFlkji1WMPNtMiO8X7Hq7/vHvltqaqzTCIZfsLkV+gYJNFRF2/lNT62xefueyKXGvRkV4ZJcfAt25j4dEzCk1Cr7KKov+ROAN8tqvIERXeJERfwXDjvvu3yaD+BGP+eixTlkZYJBOvunYJbLS/8mUCwga/dNzt/+fjAqgn0gfs63jYAvwD7WAMCcZteewAAAABJRU5ErkJggg==" InformativeScreenshot="2f5373f214791bcbfcb68b000ba5a1a4.jpg" Selector="&lt;html app='chrome.exe' title='네이버 웹툰 &amp;gt; 요일별 웹툰 &amp;gt; 전체웹툰' /&gt;" Url="[I_config(&quot;NaverWebtoonUrl&quot;).ToString]" />
+        </uix:NApplicationCard.TargetApp>
+      </uix:NApplicationCard>
+    </Sequence>
+  </Sequence>
+</Activity>
